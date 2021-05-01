@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v" \
+"C:/Users/could/OneDrive - California Polytechnic State University/Downloads/cntr_up_clr_nb_v1_03.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/ram_single_port.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/rca_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/reg_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/univ_sseg.v" \
+
+sv xil_defaultlib  \
+"../../../../CPE233Labs.srcs/sources_1/new/Exp1.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/fib_fsm.sv" \
+"../../../../CPE233Labs.srcs/sim_1/new/exp_1_sim.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

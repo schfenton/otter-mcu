@@ -1,0 +1,27 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Users/could/OneDrive - California Polytechnic State University/Downloads/cntr_up_clr_nb_v1_03.v,1617581082,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v,,cntr_up_clr_nb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/Exp4Sim.v,1619400836,verilog,,,,tb_2,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/Exp4simsv.sv,1619401300,systemVerilog,,,,tb_23,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/exp_1_sim.sv,1617653887,systemVerilog,,,,exp_1_sim,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/tb.v,1618977957,verilog,,,,tb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ALU.sv,1619035572,systemVerilog,,,,ALU,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/BRANCH_ADDR_GEN.sv,1619462147,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv,,BRANCH_ADDR_GEN,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp1.sv,1618012692,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/fib_fsm.sv,,EXP1_CKT,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv,1619741846,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv,,Exp4;ProgramCounterMod,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv,1619467459,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv,,IMMED_GEN,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv,1619392718,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/Exp4simsv.sv,,Memory,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/PC_MOD.sv,1618186266,systemVerilog,,,,PC_MOD,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v,1617653273,verilog,,C:/Users/could/OneDrive - California Polytechnic State University/Downloads/cntr_up_clr_nb_v1_03.v,,clk_2n_div_test,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_divider_nbit.v,1617528685,verilog,,C:/Users/could/OneDrive - California Polytechnic State University/Downloads/cntr_up_clr_nb_v1_03.v,,clk_divider_nbit,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/fib_fsm.sv,1617661422,systemVerilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sim_1/new/exp_1_sim.sv,,fib_fsm,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v,1617528650,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ram_single_port.v,,mux_2t1_nb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_4t1_nb.v,1618184879,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/rca_nb.v,,mux_4t1_nb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ram_single_port.v,1617389619,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/rca_nb.v,,ram_single_port,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/rca_nb.v,1617390631,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v,,rca_nb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/reg_nb.v,1617392060,verilog,,E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v,,reg_nb,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v,1619392965,verilog,,,,reg_nb_sclr,,uvm,,,,,,
+E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v,1617390489,verilog,,,,clk_divder;cnt_convert_14b;cnt_convert_7b;univ_sseg,,uvm,,,,,,
