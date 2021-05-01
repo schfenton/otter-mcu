@@ -64,7 +64,7 @@ module CU_FSM(
     typedef enum logic [6:0] {
         LUI    = 7'b0110111,
         AUIPC  = 7'b0010111,
-        JAL    = 7'b1101111,
+        JAL    = 7'b1101111,        
         JALR   = 7'b1100111,
         BRANCH = 7'b1100011,
         LOAD   = 7'b0000011,
@@ -94,13 +94,22 @@ module CU_FSM(
 
             st_INIT: //waiting state  
             begin
+                pcWrite     = 1'b0;
+                regWrite    = 1'b0;
+                memWE2      = 1'b0;
+                memRDEN1    = 1'b0;
+                memRDEN2    = 1'b0;
                 reset = 1'b1;                    
                 NS = st_FET; 
             end
 
             st_FET: //waiting state  
             begin
-                memRDEN1 = 1'b1;                    
+                pcWrite     = 1'b0;
+                regWrite    = 1'b0;
+                memWE2      = 1'b0;
+                memRDEN1    = 1'b1;
+                memRDEN2    = 1'b0;
                 NS = st_EX; 
             end
               
@@ -108,44 +117,57 @@ module CU_FSM(
             begin
                 pcWrite = 1'b1;
 				case (OPCODE)
-				    LOAD: 
-                       begin
-                          regWrite = 1'b0;
-                          NS = st_WB;
-                       end
+				    LOAD:                           // lb, lbu, lh, lhu, lw,
+                        begin                       
+                            regWrite    = 1'b1;     // Loading from memory into register
+                            memWE2      = 1'b0;
+                            memRDEN1    = 1'b1;     // Need to enable read access to one RAM port
+                            memRDEN2    = 1'b0;
+                            NS = st_WB;
+                        end
                     
-					STORE: 
-                       begin
-                          regWrite = 1'b0;
-                          NS = st_FET;
-                       end
+                    STORE:                          // Reading from register and storing in memory
+                        begin
+                            regWrite    = 1'b0;     // do not write to reg
+                            memWE2      = 1'b1;     // must write to mem
+                            memRDEN1    = 1'b0;     // turn off read access
+                            memRDEN2    = 1'b0;
+                            NS = st_FET;
+                        end
                     
 					BRANCH: 
-                       begin
-                          NS = st_FET;
-                       end
+                        begin
+                            regWrite    = 1'b0;     // All read and write should be zero
+                            memWE2      = 1'b0;
+                            memRDEN1    = 1'b0;
+                            memRDEN2    = 1'b0;
+                            NS = st_FET;
+                        end
 					
-					LUI: 
-					   begin
-                          regWrite = 1'b0;					      
-					      NS = st_FET;
+                    LUI: 
+                        begin                       // load value from imm_gen into reg
+                            regWrite    = 1'b1;     // only enable regWrite
+                            memWE2      = 1'b0;
+                            memRDEN1    = 1'b0;
+                            memRDEN2    = 1'b0;
+                            NS = st_FET;
 					   end
 					  
 					OP_IMM:  // addi 
-					   begin 
-					      regWrite = 1'b0;	
-					      NS = st_FET;
+                       begin 
+					       regWrite = 1'b0;	
+					       NS = st_FET;
 					   end
 					
 	                JAL: 
 					   begin
-					      regWrite = 1'b0; 
-					      NS = st_FET;
+					       regWrite = 1'b0; 
+					       NS = st_FET;
 					   end
 					 
                     default:  
 					   begin 
-					      NS = st_FET;
+					       NS = st_FET;
 					   end
 					
                 endcase
@@ -153,9 +175,10 @@ module CU_FSM(
                
             st_WB:
             begin
-               regWrite = 1'b0; 
-               NS = st_FET;
-               memRDEN2 = 1'b0;
+                // pcWrite = 1'b0;
+                regWrite = 1'b0; 
+                NS = st_FET;
+                memRDEN2 = 1'b0;
             end
  
             default: NS = st_FET;
