@@ -118,11 +118,12 @@ module CU_FSM(
                 pcWrite = 1'b1;
 				case (OPCODE)
 				    LOAD:                           // lb, lbu, lh, lhu, lw,
-                        begin                       
-                            regWrite    = 1'b1;     // Loading from memory into register
+                        begin
+                            pcWrite     = 1'b0;                       
+                            regWrite    = 1'b0;
                             memWE2      = 1'b0;
-                            memRDEN1    = 1'b1;     // Need to enable read access to one RAM port
-                            memRDEN2    = 1'b0;
+                            memRDEN1    = 1'b0;
+                            memRDEN2    = 1'b1;     // Need to enable read access to one RAM port
                             NS = st_WB;
                         end
                     
@@ -137,7 +138,7 @@ module CU_FSM(
                     
 					BRANCH: 
                         begin
-                            regWrite    = 1'b0;     // All read and write should be zero
+                            regWrite    = 1'b0;     // Need to read immediate and register values
                             memWE2      = 1'b0;
                             memRDEN1    = 1'b0;
                             memRDEN2    = 1'b0;
@@ -155,13 +156,13 @@ module CU_FSM(
 					  
 					OP_IMM:  // addi 
                        begin 
-					       regWrite = 1'b0;	
+					       regWrite = 1'b1;
 					       NS = st_FET;
 					   end
 					
 	                JAL: 
 					   begin
-					       regWrite = 1'b0; 
+					       regWrite = 1'b1; 
 					       NS = st_FET;
 					   end
 					 
@@ -175,8 +176,8 @@ module CU_FSM(
                
             st_WB:
             begin
-                // pcWrite = 1'b0;
-                regWrite = 1'b0; 
+                pcWrite = 1'b1;
+                regWrite = 1'b1; 
                 NS = st_FET;
                 memRDEN2 = 1'b0;
             end

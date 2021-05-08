@@ -82,10 +82,10 @@ module ProgramCounterMod(
     input [31:0] jal,
     input [31:0] branch,
     input [31:0] jalr,
-    output logic [31:0] pc
+    output logic [31:0] pc,
+    output logic [31:0] next_addr
     );
     
-    logic [31:0] next_addr; // Output from RCA
     logic [31:0] load_addr; // Output from Mux into PC reg
     
     //MUX for pcSource to select instruction inputs

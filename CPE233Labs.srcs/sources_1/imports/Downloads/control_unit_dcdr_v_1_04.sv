@@ -89,29 +89,31 @@ module CU_DCDR(
 		case(OPCODE)
 			LUI:
 			begin
-				alu_fun = 4'b0000; 
-				alu_srcA = 1'b0; 
-				rf_wr_sel = 2'b00; 
+				alu_fun = 4'b1001; 
+				alu_srcA = 1'b1; 
+				rf_wr_sel = 2'b11; 
 			end
 			
 			JAL:
 			begin
+			    pcSource = 2'b11;
 				rf_wr_sel = 2'b00; 
 			end
 			
 			LOAD: 
 			begin
-				alu_fun = 4'b0000; 
-				alu_srcA = 1'b0; 
-				alu_srcB = 2'b00; 
-				rf_wr_sel = 2'b00; 
+				alu_fun = 4'b0000;    // add operation
+				alu_srcA = 1'b0;      // read from rs1
+				alu_srcB = 2'b01;     // load instructions I-type imm to add to data
+				rf_wr_sel = 2'b10;    // write from second memory output
 			end
 			
 			STORE:
 			begin
-				alu_fun = 4'b0000; 
-				alu_srcA = 1'b0; 
-				alu_srcB = 2'b00; 
+				alu_fun = 4'b0000;    // add op
+				alu_srcA = 1'b0;      // read rs1
+				alu_srcB = 2'b10;     // S-type imm
+				rf_wr_sel = 2'b10;    // write from second memory output
 			end
 			
 			OP_IMM:
@@ -121,8 +123,8 @@ module CU_DCDR(
 					begin
 						alu_fun = 4'b0000;
 						alu_srcA = 1'b0; 
-						alu_srcB = 2'b00;
-						rf_wr_sel = 2'b00; 
+						alu_srcB = 2'b01;
+						rf_wr_sel = 2'b11; 
 					end
 					
 					default: 

@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/mux_4t1_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/rca_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v" \
+
+sv xil_defaultlib  \
+"../../../../CPE233Labs.srcs/sources_1/new/ALU.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/BRANCH_ADDR_GEN.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/Exp4.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/Memory.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/OTTER_MCU.sv" \
+"../../../../CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv" \
+"../../../../CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv" \
+"../../../../CPE233Labs.srcs/sources_1/imports/Downloads/reg_file_v_1_01.sv" \
+
+verilog xil_defaultlib  \
+"../../../../CPE233Labs.srcs/sources_1/new/exp5_testbench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
