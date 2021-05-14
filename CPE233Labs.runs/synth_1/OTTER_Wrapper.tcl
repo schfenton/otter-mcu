@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -100,10 +98,12 @@ read_verilog -library xil_defaultlib -sv {
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv}
 }
 read_verilog -library xil_defaultlib {
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_4t1_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/rca_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

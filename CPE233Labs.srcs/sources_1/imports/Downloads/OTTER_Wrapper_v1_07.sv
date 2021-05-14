@@ -1,25 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company:   Ratner Surf Designs
-// Engineer:  James Ratner, Joseph Callenes-Sloan, Paul Hummel, Celina Lazaro
+// Engineer:  James Ratner 
 // 
-// Create Date: 11/14/2018 02:46:31 PM
+// Create Date: 03/30/2021 02:46:31 PM
 // Design Name: 
-// Module Name: OTTER_Wrapper
+// Module Name: OTTER_Wrapper_Testall
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: Otter Wrapper: interfaces RISC-V OTTER to basys3 board. 
+// Description: Otter Wrapper: interfaces RISC-V OTTER to basys3 board for 
+//              Experiment 6. 
 //
 // Dependencies: 
 // 
 // Revision:
-// Revision 1.02 - (02-02-2020): first released version; not fully tested
-//          1.03 - (02-06-2020): removed typos, connected output to regs
-//          1.04 - (02-08-2020): removed typo for anodes
-//          1.05 - (04-01-2020): cleaned up; added comments
-//          1.06 - (11-11-2020): added a few more comments & clean-up
-//          1.07 - (02-11-2021): fixed error in always block for registers 
+// Revision 1.00 - (03-30-2021): created
+//          1.01 - (05-10-2021): removed initialization for s_clk and ss_clk
 //            
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -37,13 +34,13 @@ module OTTER_Wrapper(
               
    //- OUTPUT PORT IDS --------------------------------------------------------
    localparam LEDS_PORT_ADDR     = 32'h1100C000;  // 0x1100_C000
-   localparam SEGS_PORT_ADDR     = 32'h1100C004;  // 0x1100_C004
-   localparam ANODES_PORT_ADDR   = 32'h1100C008;  // 0x1100_C008
+   localparam COUNT_ADDR         = 32'h1100C00C;  // 0x1100_C00C
 	
    //- Signals for connecting OTTER_MCU to OTTER_wrapper 
    logic s_interrupt;  
    logic s_reset;              
-   logic s_clk = 0;            // divided clock
+   logic s_clk;            // divided clock
+   logic ss_clk;           // a more divided clock
 
    logic [31:0] IOBUS_out;
    logic [31:0] IOBUS_in;
@@ -54,37 +51,55 @@ module OTTER_Wrapper(
    logic [7:0]  r_segs;   //  register for segments (cathodes)
    logic [15:0] r_leds;   //  register for LEDs
    logic [3:0]  r_an;     //  register for display enables (anodes)
+   logic [13:0] r_count;  //  register for the count value
 
    
    assign s_interrupt = buttons[4];  // for btn(4) connecting to interrupt
    assign s_reset = buttons[3];      // for btn(3) connecting to reset
 
-   //- Instantiate RISC-V OTTER MCU 
-   OTTER_MCU  my_otter(
+  //- Instantiate RISC-V OTTER MCU 
+  OTTER_MCU  my_otter(
       .RST         (s_reset),
       .intr        (1'b0),
-      .clk         (s_clk),
+      .clk         (ss_clk),
       .iobus_in    (IOBUS_in),
       .iobus_out   (IOBUS_out), 
       .iobus_addr  (IOBUS_addr), 
       .iobus_wr    (IOBUS_wr)   );
+      
+  //- Seven-segment display devcide
+  univ_sseg my_univ_sseg (
+     .cnt1    (r_count), 
+     .cnt2    (7'b0000000), 
+     .valid   (1'b1), 
+     .dp_en   (1'b0), 
+     .dp_sel  (2'b0), 
+     .mod_sel (2'b10), 
+     .sign    (1'b0), 
+     .clk     (s_clk), 
+     .ssegs   (segs), 
+     .disp_en (an)    ); 
    
-   //- Divide clk by 2 
+ // clock divider   
+ clk_2n_div_test #(.n(18)) MY_DIV (
+    .clockin   (s_clk), 
+    .fclk_only (0),          
+    .clockout  (ss_clk)   );       
+     
+      //- Divide clk by 2 
    always_ff @ (posedge clk)
       s_clk <= ~s_clk;
-  
+          
    //- Drive dev board output devices with registers 
-   always_ff @ (posedge s_clk)
+   always_ff @ (posedge ss_clk)
    begin
       if (IOBUS_wr == 1)
       begin
          case(IOBUS_addr)
             LEDS_PORT_ADDR:   
                r_leds <= IOBUS_out[15:0];    
-			SEGS_PORT_ADDR:   
-               r_segs <= IOBUS_out[7:0];
-            ANODES_PORT_ADDR: 
-               r_an  <= IOBUS_out[3:0];
+			   COUNT_ADDR:   
+               r_count <= IOBUS_out[13:0];
           endcase
        end
     end
@@ -105,8 +120,6 @@ module OTTER_Wrapper(
 	
    //- assign registered outputs to actual outputs 
    assign leds = r_leds; 
-   assign segs = r_segs; 
-   assign an = r_an; 
 	
 endmodule
 

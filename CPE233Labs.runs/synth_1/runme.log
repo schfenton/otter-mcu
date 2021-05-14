@@ -17,16 +17,15 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5476
+INFO: [Synth 8-7075] Helper process launched with PID 7160
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1136.430 ; gain = 15.898
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1136.492 ; gain = 13.551
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'OTTER_Wrapper' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:26]
+INFO: [Synth 8-6157] synthesizing module 'OTTER_Wrapper' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:23]
 	Parameter SWITCHES_PORT_ADDR bound to: 285245440 - type: integer 
 	Parameter BUTTONS_PORT_ADDR bound to: 285245444 - type: integer 
 	Parameter LEDS_PORT_ADDR bound to: 285261824 - type: integer 
-	Parameter SEGS_PORT_ADDR bound to: 285261828 - type: integer 
-	Parameter ANODES_PORT_ADDR bound to: 285261832 - type: integer 
+	Parameter COUNT_ADDR bound to: 285261836 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'OTTER_MCU' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/OTTER_MCU.sv:16]
 INFO: [Synth 8-6157] synthesizing module 'Memory' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv:47]
 INFO: [Synth 8-3876] $readmem data file 'otter_memory.mem' is read successfully [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv:72]
@@ -46,6 +45,7 @@ WARNING: [Synth 8-7071] port 'co' of module 'rca_nb' is unconnected for instance
 WARNING: [Synth 8-7023] instance 'PC_Add_Four' of module 'rca_nb' has 5 connections declared, but only 4 given [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv:111]
 INFO: [Synth 8-6155] done synthesizing module 'ProgramCounterMod' (5#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv:77]
 INFO: [Synth 8-6157] synthesizing module 'CU_DCDR' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv:40]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv:216]
 INFO: [Synth 8-6155] done synthesizing module 'CU_DCDR' (6#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv:40]
 INFO: [Synth 8-6157] synthesizing module 'CU_FSM' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv:42]
 INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv:93]
@@ -62,21 +62,40 @@ INFO: [Synth 8-6155] done synthesizing module 'mux_2t1_nb' (11#1) [E:/Documents/
 INFO: [Synth 8-6157] synthesizing module 'ALU' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ALU.sv:6]
 INFO: [Synth 8-6155] done synthesizing module 'ALU' (12#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ALU.sv:6]
 INFO: [Synth 8-6155] done synthesizing module 'OTTER_MCU' (13#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/OTTER_MCU.sv:16]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:81]
-INFO: [Synth 8-6155] done synthesizing module 'OTTER_Wrapper' (14#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:26]
+INFO: [Synth 8-6157] synthesizing module 'univ_sseg' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:82]
+INFO: [Synth 8-6157] synthesizing module 'cnt_convert_14b' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:275]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:294]
+INFO: [Synth 8-6155] done synthesizing module 'cnt_convert_14b' (14#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:275]
+INFO: [Synth 8-6157] synthesizing module 'cnt_convert_7b' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:373]
+INFO: [Synth 8-6155] done synthesizing module 'cnt_convert_7b' (15#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:373]
+INFO: [Synth 8-6157] synthesizing module 'clk_divder' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:258]
+	Parameter n bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_divder' (16#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:258]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:129]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:145]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:157]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:169]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:181]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:193]
+INFO: [Synth 8-6155] done synthesizing module 'univ_sseg' (17#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v:82]
+INFO: [Synth 8-6157] synthesizing module 'clk_2n_div_test' [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v:39]
+	Parameter n bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_2n_div_test' (18#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v:39]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:98]
+INFO: [Synth 8-6155] done synthesizing module 'OTTER_Wrapper' (19#1) [E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1204.691 ; gain = 84.160
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1204.445 ; gain = 81.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1204.691 ; gain = 84.160
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1204.445 ; gain = 81.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1204.691 ; gain = 84.160
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1204.445 ; gain = 81.504
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1204.691 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1204.445 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -87,26 +106,26 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/OTTER_Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1295.938 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1314.324 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1295.938 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1314.324 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:22 . Memory (MB): peak = 1314.324 ; gain = 191.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:22 . Memory (MB): peak = 1314.324 ; gain = 191.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:22 . Memory (MB): peak = 1314.324 ; gain = 191.383
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'CU_FSM'
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
@@ -135,7 +154,7 @@ INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'sequential' in module 'CU_FSM'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 1314.324 ; gain = 191.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -145,11 +164,14 @@ Detailed RTL Component Info :
 	   3 Input   33 Bit       Adders := 1     
 	   2 Input   32 Bit       Adders := 4     
 	   3 Input   32 Bit       Adders := 1     
+	   2 Input   14 Bit       Adders := 18    
+	   2 Input    4 Bit       Adders := 14    
+	   2 Input    2 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 4     
 	               16 Bit    Registers := 1     
-	                8 Bit    Registers := 1     
-	                4 Bit    Registers := 1     
+	               14 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---RAMs : 
 	             512K Bit	(16384 X 32 bit)          RAMs := 1     
@@ -160,16 +182,21 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit        Muxes := 3     
 	   4 Input   32 Bit        Muxes := 3     
 	   3 Input   32 Bit        Muxes := 1     
-	   6 Input    4 Bit        Muxes := 1     
-	   6 Input    2 Bit        Muxes := 3     
-	   2 Input    2 Bit        Muxes := 1     
-	   4 Input    2 Bit        Muxes := 1     
-	   7 Input    2 Bit        Muxes := 1     
+	   4 Input   14 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	  10 Input    4 Bit        Muxes := 1     
+	  11 Input    4 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 5     
+	   2 Input    2 Bit        Muxes := 3     
+	  10 Input    2 Bit        Muxes := 4     
+	   4 Input    2 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 1     
 	   9 Input    1 Bit        Muxes := 1     
-	   6 Input    1 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 4     
-	   7 Input    1 Bit        Muxes := 4     
-	   4 Input    1 Bit        Muxes := 9     
+	  10 Input    1 Bit        Muxes := 5     
+	   4 Input    1 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 3     
+	   3 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -185,44 +212,44 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_Wrapper/my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "my_otter/OTTER_MEMORY/memory_reg"
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:09 ; elapsed = 00:01:16 . Memory (MB): peak = 1369.180 ; gain = 246.238
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Block RAM: Preliminary Mapping	Report (see note below)
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name   | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|OTTER_Wrapper | my_otter/OTTER_MEMORY/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|my_otter    | OTTER_MEMORY/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
 
 Distributed RAM: Preliminary Mapping	Report (see note below)
-+--------------+--------------------------------+-----------+----------------------+--------------+
-|Module Name   | RTL Object                     | Inference | Size (Depth x Width) | Primitives   | 
-+--------------+--------------------------------+-----------+----------------------+--------------+
-|OTTER_Wrapper | my_otter/REG_FILE/reg_file_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
-+--------------+--------------------------------+-----------+----------------------+--------------+
++------------+-----------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object            | Inference | Size (Depth x Width) | Primitives   | 
++------------+-----------------------+-----------+----------------------+--------------+
+|my_otter    | REG_FILE/reg_file_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
++------------+-----------------------+-----------+----------------------+--------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 ---------------------------------------------------------------------------------
@@ -232,32 +259,32 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:18 ; elapsed = 00:01:25 . Memory (MB): peak = 1373.809 ; gain = 250.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1295.938 ; gain = 175.406
+Finished Timing Optimization : Time (s): cpu = 00:01:18 ; elapsed = 00:01:25 . Memory (MB): peak = 1373.809 ; gain = 250.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Block RAM: Final Mapping	Report
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name   | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|OTTER_Wrapper | my_otter/OTTER_MEMORY/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
-+--------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|my_otter    | OTTER_MEMORY/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 
 Distributed RAM: Final Mapping	Report
-+--------------+--------------------------------+-----------+----------------------+--------------+
-|Module Name   | RTL Object                     | Inference | Size (Depth x Width) | Primitives   | 
-+--------------+--------------------------------+-----------+----------------------+--------------+
-|OTTER_Wrapper | my_otter/REG_FILE/reg_file_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
-+--------------+--------------------------------+-----------+----------------------+--------------+
++------------+-----------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object            | Inference | Size (Depth x Width) | Primitives   | 
++------------+-----------------------+-----------+----------------------+--------------+
+|my_otter    | REG_FILE/reg_file_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
++------------+-----------------------+-----------+----------------------+--------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -298,7 +325,7 @@ INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_re
 INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_reg_bram_23 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance my_otter/OTTER_MEMORY/memory_reg_bram_23 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1318.090 ; gain = 197.559
+Finished Technology Mapping : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1414.520 ; gain = 291.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -316,37 +343,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished IO Insertion : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -362,43 +389,43 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |BUFG     |     2|
-|2     |CARRY4   |    24|
-|3     |LUT1     |     3|
-|4     |LUT2     |    48|
-|5     |LUT3     |    55|
-|6     |LUT4     |    66|
-|7     |LUT5     |   104|
-|8     |LUT6     |   514|
+|1     |BUFG     |     3|
+|2     |CARRY4   |   135|
+|3     |LUT1     |   137|
+|4     |LUT2     |   196|
+|5     |LUT3     |   137|
+|6     |LUT4     |   265|
+|7     |LUT5     |   281|
+|8     |LUT6     |   902|
 |9     |MUXF7    |   128|
-|10    |MUXF8    |    63|
+|10    |MUXF8    |    64|
 |11    |RAM32M   |    12|
 |12    |RAMB36E1 |    16|
-|14    |FDRE     |   119|
-|15    |IBUF     |    22|
-|16    |OBUF     |    28|
+|17    |FDRE     |   157|
+|18    |IBUF     |    22|
+|19    |OBUF     |    28|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:38 . Memory (MB): peak = 1331.789 ; gain = 120.012
-Synthesis Optimization Complete : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1331.789 ; gain = 211.258
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:13 ; elapsed = 00:01:26 . Memory (MB): peak = 1428.328 ; gain = 195.508
+Synthesis Optimization Complete : Time (s): cpu = 00:01:24 ; elapsed = 00:01:31 . Memory (MB): peak = 1428.328 ; gain = 305.387
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1336.098 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 243 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 1440.387 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 355 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1336.098 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1440.387 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 12 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 12 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-113 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+131 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 1336.098 ; gain = 215.566
+synth_design: Time (s): cpu = 00:01:32 ; elapsed = 00:01:49 . Memory (MB): peak = 1440.387 ; gain = 317.445
 INFO: [Common 17-1381] The checkpoint 'E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.runs/synth_1/OTTER_Wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file OTTER_Wrapper_utilization_synth.rpt -pb OTTER_Wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed May  5 13:00:42 2021...
+INFO: [Common 17-206] Exiting Vivado at Fri May 14 14:32:55 2021...

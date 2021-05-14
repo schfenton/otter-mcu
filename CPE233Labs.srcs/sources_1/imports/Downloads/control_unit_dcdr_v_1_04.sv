@@ -87,66 +87,194 @@ module CU_DCDR(
 		alu_srcA = 1'b0;   alu_fun  = 4'b0000;
 		
 		case(OPCODE)
-			LUI:
-			begin
-				alu_fun = 4'b1001; 
-				alu_srcA = 1'b1; 
-				rf_wr_sel = 2'b11; 
-			end
+			 LUI:
+			 begin
+				 alu_fun = 4'b1001; 
+				 alu_srcA = 1'b1; 
+				 rf_wr_sel = 2'b11; 
+			 end
+			 
+			 AUIPC:
+			 begin
+			     alu_srcA = 1'b1;
+			     alu_srcB = 2'b11;
+			     rf_wr_sel = 2'b11;
+			 end
 			
-			JAL:
-			begin
-			    pcSource = 2'b11;
-				rf_wr_sel = 2'b00; 
-			end
-			
-			LOAD: 
-			begin
-				alu_fun = 4'b0000;    // add operation
-				alu_srcA = 1'b0;      // read from rs1
-				alu_srcB = 2'b01;     // load instructions I-type imm to add to data
-				rf_wr_sel = 2'b10;    // write from second memory output
-			end
-			
-			STORE:
-			begin
-				alu_fun = 4'b0000;    // add op
-				alu_srcA = 1'b0;      // read rs1
-				alu_srcB = 2'b10;     // S-type imm
-				rf_wr_sel = 2'b10;    // write from second memory output
-			end
-			
-			OP_IMM:
-			begin
-				case(FUNC3)
-					3'b000: // instr: ADDI
-					begin
-						alu_fun = 4'b0000;
-						alu_srcA = 1'b0; 
-						alu_srcB = 2'b01;
-						rf_wr_sel = 2'b11; 
-					end
-					
-					default: 
-					begin
-						pcSource = 2'b00; 
-						alu_fun = 4'b0000;
-						alu_srcA = 1'b0; 
-						alu_srcB = 2'b00; 
-						rf_wr_sel = 2'b00; 
-					end
-				endcase
-			end
-
-			default:
-			begin
-				 pcSource = 2'b00; 
-				 alu_srcB = 2'b00; 
+			 JAL:
+			 begin
+			     pcSource = 2'b11;
 				 rf_wr_sel = 2'b00; 
-				 alu_srcA = 1'b0; 
-				 alu_fun = 4'b0000;
-			end
-			endcase
+			 end
+			
+		   	 JALR:
+			 begin
+			     alu_srcA = 1'b0;
+			     alu_srcB = 2'b01;
+			     pcSource = 2'b01;
+			 end
+			
+		     LOAD: 
+		     begin
+		     	 alu_fun = 4'b0000;    // add operation
+		     	 alu_srcA = 1'b0;      // read from rs1
+		     	 alu_srcB = 2'b01;     // load instructions I-type imm to add to data
+		     	 rf_wr_sel = 2'b10;    // write from third input
+		     end
+		     
+		     STORE:
+		     begin
+		     	 alu_fun = 4'b0000;    // add op
+		     	 alu_srcA = 1'b0;      // read rs1
+		     	 alu_srcB = 2'b10;     // S-type imm
+		     	 rf_wr_sel = 2'b10;    // write from second memory output
+		     end
+		     
+		     OP_IMM:
+		     begin
+		     	 alu_srcB = 2'b01;
+		     	 rf_wr_sel = 2'b11;
+		     end
+			
+			 OP_RG3:
+			 begin
+			     alu_srcB = 2'b00;
+			     rf_wr_sel = 2'b11;
+			 end
+			
+			 BRANCH:
+			 begin
+			     case(FUNC3)
+			         BEQ:
+			         begin
+			             if(br_eq)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			         
+			         BNE:
+			         begin
+			             if(!br_eq)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			             
+			         BLT:
+			         begin
+			             if(br_lt)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			         
+			         BGE:
+			         begin
+			             if(!br_lt)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			             
+			         BLTU:
+			         begin
+			             if(br_ltu)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			             
+			         BGEU:
+			         begin
+			             if(!br_ltu)
+			                 begin
+			                 pcSource = 2'b10;
+			                 end
+			         end
+			         
+			         default:
+			         begin
+			             pcSource = 2'b00;
+			         end
+			     endcase
+			 end
+
+			 default:
+			 begin
+			     pcSource = 2'b00; 
+			     alu_srcB = 2'b00; 
+			     rf_wr_sel = 2'b00; 
+			     alu_srcA = 1'b0; 
+			     alu_fun = 4'b0000;
+			 end
+	    endcase
+        
+        //handle func cases of operation instructions
+        if(OPCODE == OP_IMM || OPCODE == OP_RG3)
+        begin
+            case(FUNC3)
+		        3'b000: // instr: ADDI, ADD/SUB
+		     	begin
+		     	    alu_fun = 4'b0000;
+		    	    if(OPCODE == OP_RG3 && func7 == 1'b1)
+		            begin
+		                alu_fun = 4'b1000;
+		            end
+		    	end
+		     	
+		     	3'b001: //SLLI, SLL
+		     	begin
+		     	    alu_fun = 4'b0001;
+		     	end
+		     	
+		     	3'b010: //SLTI, SLT
+		     	begin
+		     	    alu_fun = 4'b0010;
+		     	end
+		     	
+		     	3'b011: //SLTIU, SLTU
+		     	begin
+		     	    alu_fun = 4'b0011;
+		     	end
+		     	
+		     	3'b100: //XORI, XOR
+		     	begin
+		     	    alu_fun = 4'b0100;
+		     	end
+		     	
+		     	3'b101: //SRLI, SRL, SRAI, SRA
+		     	begin
+		     	    if(func7) //SRAI, SRA
+		     	        begin
+		     	        alu_fun = 4'b1101;
+		     	        end
+		     	    else      //SRLI, SRL
+		     	        begin
+		     	        alu_fun = 4'b0101;
+		     	        end
+		     	end
+		     	
+		     	3'b110: //ORI, OR
+		     	begin
+		     	    alu_fun = 4'b0110;
+		     	end
+		     	
+		     	3'b111: //ANDI, AND
+		     	begin
+		     	    alu_fun = 4'b0111;
+		     	end
+		     		
+                default: 
+                begin
+                	pcSource = 2'b00; 
+                	alu_fun = 4'b0000;
+                	alu_srcA = 1'b0; 
+                	alu_srcB = 2'b00; 
+                	rf_wr_sel = 2'b00; 
+                end
+		    endcase
+        end
     end
 
 endmodule

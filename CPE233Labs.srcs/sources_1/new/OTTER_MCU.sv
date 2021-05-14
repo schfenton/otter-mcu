@@ -67,6 +67,11 @@
     //REG_FILE_MUX
     logic [31:0] wd_load;
     
+    //BRANCH_COND_GEN
+    logic br_eq = (rs1 == rs2);
+    logic br_lt = ($signed(rs1) < $signed(rs2));
+    logic br_ltu = (rs1 < rs2);
+    
     //ALU
     logic [31:0] alu_result;
     //SRCA_MUX
@@ -74,7 +79,6 @@
     //SRCB_MUX
     logic [31:0] srcB;
     
- 
     
     Memory OTTER_MEMORY(        // Memory
         .MEM_CLK    (clk),
@@ -105,9 +109,9 @@
         );
         
      CU_DCDR my_cu_dcdr(
-        .br_eq     (0), 
-        .br_lt     (0), 
-        .br_ltu    (0),
+        .br_eq     (br_eq), 
+        .br_lt     (br_lt), 
+        .br_ltu    (br_ltu),
         .opcode    (ir[6:0]),    //-  ir[6:0]
         .func7     (ir[30]),    //-  ir[30]
         .func3     (ir[14:12]),    //-  ir[14:12] 

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed May  5 13:00:42 2021
+| Date         : Fri May 14 14:32:55 2021
 | Host         : DESKTOP-KCUM67N running 64-bit major release  (build 9200)
 | Command      : report_utilization -file OTTER_Wrapper_utilization_synth.rpt -pb OTTER_Wrapper_utilization_synth.pb
 | Design       : OTTER_Wrapper
@@ -30,16 +30,16 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  798 |     0 |     20800 |  3.84 |
-|   LUT as Logic             |  750 |     0 |     20800 |  3.61 |
+| Slice LUTs*                | 1768 |     0 |     20800 |  8.50 |
+|   LUT as Logic             | 1720 |     0 |     20800 |  8.27 |
 |   LUT as Memory            |   48 |     0 |      9600 |  0.50 |
 |     LUT as Distributed RAM |   48 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            |  119 |     0 |     41600 |  0.29 |
-|   Register as Flip Flop    |  119 |     0 |     41600 |  0.29 |
+| Slice Registers            |  157 |     0 |     41600 |  0.38 |
+|   Register as Flip Flop    |  157 |     0 |     41600 |  0.38 |
 |   Register as Latch        |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                   |  128 |     0 |     16300 |  0.79 |
-| F8 Muxes                   |   63 |     0 |      8150 |  0.77 |
+| F8 Muxes                   |   64 |     0 |      8150 |  0.79 |
 +----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 
@@ -59,7 +59,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 119   |          Yes |       Reset |            - |
+| 157   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -118,7 +118,7 @@ Table of Contents
 +------------+------+-------+-----------+-------+
 |  Site Type | Used | Fixed | Available | Util% |
 +------------+------+-------+-----------+-------+
-| BUFGCTRL   |    2 |     0 |        32 |  6.25 |
+| BUFGCTRL   |    3 |     0 |        32 |  9.38 |
 | BUFIO      |    0 |     0 |        20 |  0.00 |
 | MMCME2_ADV |    0 |     0 |         5 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |         5 |  0.00 |
@@ -152,22 +152,22 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  514 |                 LUT |
+| LUT6     |  902 |                 LUT |
+| LUT5     |  281 |                 LUT |
+| LUT4     |  265 |                 LUT |
+| LUT2     |  196 |                 LUT |
+| FDRE     |  157 |        Flop & Latch |
+| LUT3     |  137 |                 LUT |
+| LUT1     |  137 |                 LUT |
+| CARRY4   |  135 |          CarryLogic |
 | MUXF7    |  128 |               MuxFx |
-| FDRE     |  119 |        Flop & Latch |
-| LUT5     |  104 |                 LUT |
 | RAMD32   |   72 |  Distributed Memory |
-| LUT4     |   66 |                 LUT |
-| MUXF8    |   63 |               MuxFx |
-| LUT3     |   55 |                 LUT |
-| LUT2     |   48 |                 LUT |
+| MUXF8    |   64 |               MuxFx |
 | OBUF     |   28 |                  IO |
 | RAMS32   |   24 |  Distributed Memory |
-| CARRY4   |   24 |          CarryLogic |
 | IBUF     |   22 |                  IO |
 | RAMB36E1 |   16 |        Block Memory |
-| LUT1     |    3 |                 LUT |
-| BUFG     |    2 |               Clock |
+| BUFG     |    3 |               Clock |
 +----------+------+---------------------+
 
 

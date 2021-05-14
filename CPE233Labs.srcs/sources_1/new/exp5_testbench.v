@@ -5,11 +5,11 @@
 // 
 // Create Date: 01/07/2020 12:59:51 PM
 // Design Name: 
-// Module Name: tb
+// Module Name: Ex6_6_testbench
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: Testbench file for Exp 5
+// Description: Testbench file for Exp 6
 // 
 // Dependencies: 
 // 
@@ -21,24 +21,24 @@
 
 module otter_tb(); 
 
-   reg RST; 
-   reg intr; 
+   reg [15:0] switches; 
+   reg [4:0] buttons;
    reg clk; 
-   reg [31:0] iobus_in; 
-   wire [31:0] iobus_addr; 
-   wire [31:0] iobus_out; 
-   wire iobus_wr; 
+   wire [15:0] leds; 
+   wire [7:0] segs; 
+   wire [3:0] an; 
 
-OTTER_MCU  my_otter(
-     .RST         (RST),
-     .intr        (intr),
-     .clk         (clk),
-     .iobus_in    (iobus_in),
-     .iobus_out   (iobus_out), 
-     .iobus_addr  (iobus_addr), 
-     .iobus_wr    (iobus_wr)   );
-     
-   //- Generate periodic clock signal    
+
+OTTER_Wrapper my_wrapper(
+   .clk    (clk),
+   .buttons  (buttons),
+   .switches  (switches),
+   .leds  (leds),
+   .segs  (segs),
+   .an  (an)  );
+
+   
+  //- Generate periodic clock signal    
    initial    
       begin       
          clk = 0;   //- init signal        
@@ -47,14 +47,12 @@ OTTER_MCU  my_otter(
          
    initial        
    begin           
-      RST=1;
-      intr=0;
-      iobus_in = 32'h0000FEED;  
-    
-      #40
+      buttons = 5'b01000;    
+      switches = 16'h0000;
+      #80
 
-      RST = 0;  
+      buttons = 5'b00000;    
 
     end
-        
- endmodule
+
+endmodule

@@ -138,7 +138,7 @@ module CU_FSM(
                     
 					BRANCH: 
                         begin
-                            regWrite    = 1'b0;     // Need to read immediate and register values
+                            regWrite    = 1'b0;
                             memWE2      = 1'b0;
                             memRDEN1    = 1'b0;
                             memRDEN2    = 1'b0;
@@ -153,9 +153,27 @@ module CU_FSM(
                             memRDEN2    = 1'b0;
                             NS = st_FET;
 					   end
+					   
+					AUIPC:
+					   begin
+					      regWrite = 1'b1;
+					      NS = st_FET; 
+					   end
+					
+					JALR:
+					   begin
+					       regWrite = 1'b1;
+					       NS = st_FET;
+					   end
 					  
-					OP_IMM:  // addi 
+					OP_IMM:  // addi, slti, etc.
                        begin 
+					       regWrite = 1'b1;
+					       NS = st_FET;
+					   end
+					
+					OP_RG3:
+					   begin
 					       regWrite = 1'b1;
 					       NS = st_FET;
 					   end
