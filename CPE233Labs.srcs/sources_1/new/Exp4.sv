@@ -77,11 +77,13 @@ endmodule
 module ProgramCounterMod(
     input reset,
     input PCWrite,
-    input [1:0] pcSource,
+    input [2:0] pcSource,
     input clk,
     input [31:0] jal,
     input [31:0] branch,
     input [31:0] jalr,
+    input [31:0] mtvec,
+    input [31:0] mepc,
     output logic [31:0] pc,
     output logic [31:0] next_addr
     );
@@ -89,12 +91,16 @@ module ProgramCounterMod(
     logic [31:0] load_addr; // Output from Mux into PC reg
     
     //MUX for pcSource to select instruction inputs
-    mux_4t1_nb  #(.n(32)) Mux_PCSourceSelector  (
+    mux_8t1_nb  #(.n(32)) Mux_PCSourceSelector  (
         .SEL   (pcSource), 
         .D0    (next_addr), 
         .D1    (jalr), 
         .D2    (branch), 
         .D3    (jal),
+        .D4    (mtvec),
+        .D5    (mepc),
+        .D6    (32'd0),
+        .D7    (32'd0),
         .D_OUT (load_addr)
         );
         

@@ -1,15 +1,16 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v" \
 "../../../../CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v" \
 "../../../../CPE233Labs.srcs/sources_1/new/mux_4t1_nb.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/mux_8t1_nb.v" \
 "../../../../CPE233Labs.srcs/sources_1/new/rca_nb.v" \
 "../../../../CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v" \
-"../../../../CPE233Labs.srcs/sources_1/new/univ_sseg.v" \
 
 sv xil_defaultlib  \
 "../../../../CPE233Labs.srcs/sources_1/new/ALU.sv" \
 "../../../../CPE233Labs.srcs/sources_1/new/BRANCH_ADDR_GEN.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/CSR.v" \
+"../../../../CPE233Labs.srcs/sources_1/new/DBounce.sv" \
 "../../../../CPE233Labs.srcs/sources_1/new/Exp4.sv" \
 "../../../../CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv" \
 "../../../../CPE233Labs.srcs/sources_1/new/Memory.sv" \
@@ -17,6 +18,7 @@ sv xil_defaultlib  \
 "../../../../CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv" \
 "../../../../CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv" \
 "../../../../CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv" \
+"../../../../CPE233Labs.srcs/sources_1/new/one_shot_bdir.sv" \
 "../../../../CPE233Labs.srcs/sources_1/imports/Downloads/reg_file_v_1_01.sv" \
 
 verilog xil_defaultlib  \

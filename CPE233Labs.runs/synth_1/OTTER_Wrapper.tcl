@@ -88,22 +88,24 @@ read_mem {{E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ot
 read_verilog -library xil_defaultlib -sv {
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ALU.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/BRANCH_ADDR_GEN.sv}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/CSR.v}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/DBounce.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/OTTER_MCU.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/one_shot_bdir.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/reg_file_v_1_01.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv}
 }
 read_verilog -library xil_defaultlib {
-  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/clk_2n_div_test.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_2t1_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_4t1_nb.v}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/mux_8t1_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/rca_nb.v}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/reg_nb_sclr.v}
-  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/univ_sseg.v}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -1,19 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineers: Schuyler Fenton and Alex Neiman 
-// 
-// Create Date: 05/01/2021 02:00:46 PM
-// Design Name: Otter MCU
-// Module Name: OTTER_MCU
-// 
-// Revision: 1
+// Engineers: Schuyler Fenton, Alex Neiman
+// Project Name: Experiment 7
 //
-// Otter RISC V MCU
-// 
+// Description: Top level for fourth version of OTTER MCU to debounce the interrupt
+// input and shoot a 3 clock cycle pulse.
 //////////////////////////////////////////////////////////////////////////////////
 
 
- module OTTER_MCU(
+
+module OTTER_MCU(
     input RST,
     input intr,
     input clk,
@@ -38,7 +34,7 @@
     logic [3:0] alu_fun;
     logic alu_srcA;
     logic [1:0] alu_srcB;
-    logic [1:0] pcSource;
+    logic [2:0] pcSource;
     logic [1:0] rf_wr_sel;
     
     //CU_FSM
@@ -67,11 +63,6 @@
     //REG_FILE_MUX
     logic [31:0] wd_load;
     
-    //BRANCH_COND_GEN
-    logic br_eq = (rs1 == rs2);
-    logic br_lt = ($signed(rs1) < $signed(rs2));
-    logic br_ltu = (rs1 < rs2);
-    
     //ALU
     logic [31:0] alu_result;
     //SRCA_MUX
@@ -79,6 +70,38 @@
     //SRCB_MUX
     logic [31:0] srcB;
     
+    //CSR
+    logic csr_WE;
+    logic int_taken;
+    logic mie;
+    logic [31:0] mepc;
+    logic [31:0] mtvec;
+    logic [31:0] csr_rd;
+    
+    //BRANCH_COND_GEN
+    logic br_eq;
+    logic br_lt;
+    logic br_ltu;
+    
+    //DeBouncer
+    logic debounced;
+    
+    //OneShot
+    logic pos_shot;
+    logic neg_shot;
+    
+    
+    
+    DBounce #(.n(10)) my_dbounce(
+    .clk    (clk),
+    .sig_in (intr),
+    .DB_out (debounced)   );
+    
+    one_shot_bdir  #(.n(3)) my_oneshot (
+    .clk           (clk),
+    .sig_in        (debounced),
+    .pos_pulse_out (pos_shot), 
+    .neg_pulse_out (neg_shot)  ); 
     
     Memory OTTER_MEMORY(        // Memory
         .MEM_CLK    (clk),
@@ -105,16 +128,19 @@
         .jalr(jalr),
         .branch(branch),
         .jal(jal),
+        .mtvec(mtvec),
+        .mepc(mepc),
         .next_addr(next_addr)
         );
         
-     CU_DCDR my_cu_dcdr(
+    CU_DCDR my_cu_dcdr(
         .br_eq     (br_eq), 
         .br_lt     (br_lt), 
         .br_ltu    (br_ltu),
         .opcode    (ir[6:0]),    //-  ir[6:0]
         .func7     (ir[30]),    //-  ir[30]
         .func3     (ir[14:12]),    //-  ir[14:12] 
+        .int_taken (int_taken),
         .alu_fun(alu_fun),
         .alu_srcA(alu_srcA),
         .alu_srcB(alu_srcB),
@@ -123,15 +149,18 @@
     
     CU_FSM CU_FSM(
         .RST(RST),
-        .intr(intr),
+        .intr(pos_shot & mie),
         .clk(clk),
         .opcode(ir[6:0]),     // ir[6:0]
+        .func3(ir[14:12]),
         .pcWrite(PCWrite),
         .regWrite(regWrite),
         .memWE2(memWE2),
         .memRDEN1(memRDEN1),
         .memRDEN2(memRDEN2),
-        .reset(reset)
+        .reset(reset),
+        .int_taken(int_taken),
+        .csr_WE(csr_WE)
     );
     
     IMMED_GEN IG(               // Immediate generator
@@ -158,7 +187,7 @@
     mux_4t1_nb  #(.n(32)) WD_Load_MUX  (
         .SEL   (rf_wr_sel), 
         .D0    (next_addr), 
-        .D1    (0), 
+        .D1    (csr_rd), 
         .D2    (mem_data), 
         .D3    (alu_result),
         .D_OUT (wd_load)
@@ -201,9 +230,30 @@
         .RESULT(alu_result)
     );
     
+    CSR  my_csr (
+    .CLK       (clk),
+    .RST       (reset),
+    .INT_TAKEN (int_taken),
+    .ADDR      (ir[31:20]),
+    .PC        (pc),
+    .WD        (rs1),
+    .WR_EN     (csr_WE), 
+    .RD        (csr_rd),
+    .CSR_MEPC  (mepc),  
+    .CSR_MTVEC (mtvec), 
+    .CSR_MIE   (mie)    ); 
+    
     // Mapping IO and stuff
     assign iobus_addr = alu_result;
     assign iobus_out = rs2;
+    
+    always_comb
+    begin
+        //BRANCH_COND_GEN
+        br_eq = (rs1 == rs2);
+        br_lt = ($signed(rs1) < $signed(rs2));
+        br_ltu = (rs1 < rs2);
+    end
     
     
 endmodule

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Fri May 14 14:34:38 2021
+| Date             : Sat May 29 12:37:03 2021
 | Host             : DESKTOP-KCUM67N running 64-bit major release  (build 9200)
 | Command          : report_power -file OTTER_Wrapper_power_routed.rpt -pb OTTER_Wrapper_power_summary_routed.pb -rpx OTTER_Wrapper_power_routed.rpx
 | Design           : OTTER_Wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.129        |
+| Total On-Chip Power (W)  | 0.107        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.056        |
+| Dynamic (W)              | 0.034        |
 | Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.4         |
-| Junction Temperature (C) | 25.6         |
+| Max Ambient (C)          | 84.5         |
+| Junction Temperature (C) | 25.5         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        3 |       --- |             --- |
-| Slice Logic              |     0.011 |     2489 |       --- |             --- |
-|   LUT as Logic           |     0.010 |     1638 |     20800 |            7.88 |
-|   CARRY4                 |    <0.001 |      135 |      8150 |            1.66 |
+| Slice Logic              |     0.013 |     2247 |       --- |             --- |
+|   LUT as Logic           |     0.012 |     1454 |     20800 |            6.99 |
+|   CARRY4                 |    <0.001 |       67 |      8150 |            0.82 |
 |   LUT as Distributed RAM |    <0.001 |       48 |      9600 |            0.50 |
-|   F7/F8 Muxes            |    <0.001 |      192 |     32600 |            0.59 |
-|   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
-|   Register               |    <0.001 |      157 |     41600 |            0.38 |
+|   F7/F8 Muxes            |    <0.001 |      193 |     32600 |            0.59 |
+|   Register               |    <0.001 |      204 |     41600 |            0.49 |
+|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |       20 |       --- |             --- |
-| Signals                  |     0.016 |     3003 |       --- |             --- |
-| Block RAM                |    <0.001 |       16 |        50 |           32.00 |
-| I/O                      |     0.028 |       50 |       106 |           47.17 |
+| Signals                  |     0.019 |     2693 |       --- |             --- |
+| Block RAM                |     0.001 |       16 |        50 |           32.00 |
+| I/O                      |    <0.001 |       50 |       106 |           47.17 |
 | Static Power             |     0.073 |          |           |                 |
-| Total                    |     0.129 |          |           |                 |
+| Total                    |     0.107 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,9 +75,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.038 |       0.028 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.044 |       0.034 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -144,13 +144,12 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| OTTER_Wrapper         |     0.056 |
-|   my_otter            |     0.026 |
-|     OTTER_MEMORY      |     0.020 |
+| OTTER_Wrapper         |     0.034 |
+|   my_otter            |     0.033 |
+|     OTTER_MEMORY      |     0.025 |
 |     ProgramCounterMod |     0.002 |
 |       PC_Reg          |     0.002 |
-|     REG_FILE          |     0.003 |
-|   my_univ_sseg        |     0.001 |
+|     REG_FILE          |     0.004 |
 +-----------------------+-----------+
 
 
