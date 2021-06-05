@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat May 29 12:33:48 2021
-# Process ID: 24532
+# Start of session at: Thu Jun  3 18:23:40 2021
+# Process ID: 27660
 # Current directory: E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.runs/synth_1
 # Command line: vivado.exe -log OTTER_Wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source OTTER_Wrapper.tcl
 # Log file: E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.runs/synth_1/OTTER_Wrapper.vds

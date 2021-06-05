@@ -83,25 +83,7 @@ module OTTER_MCU(
     logic br_lt;
     logic br_ltu;
     
-    //DeBouncer
-    logic debounced;
     
-    //OneShot
-    logic pos_shot;
-    logic neg_shot;
-    
-    
-    
-    DBounce #(.n(10)) my_dbounce(
-    .clk    (clk),
-    .sig_in (intr),
-    .DB_out (debounced)   );
-    
-    one_shot_bdir  #(.n(3)) my_oneshot (
-    .clk           (clk),
-    .sig_in        (debounced),
-    .pos_pulse_out (pos_shot), 
-    .neg_pulse_out (neg_shot)  ); 
     
     Memory OTTER_MEMORY(        // Memory
         .MEM_CLK    (clk),
@@ -149,7 +131,7 @@ module OTTER_MCU(
     
     CU_FSM CU_FSM(
         .RST(RST),
-        .intr(pos_shot & mie),
+        .intr(intr & mie),
         .clk(clk),
         .opcode(ir[6:0]),     // ir[6:0]
         .func3(ir[14:12]),

@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -89,15 +91,14 @@ read_verilog -library xil_defaultlib -sv {
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/ALU.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/BRANCH_ADDR_GEN.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/CSR.v}
-  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/DBounce.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Exp4.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/IMMED_GEN.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/Memory.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/OTTER_MCU.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_dcdr_v_1_04.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/control_unit_fsm_v_1_06.sv}
-  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/one_shot_bdir.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/reg_file_v_1_01.sv}
+  {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/new/timer_counter.sv}
   {E:/Documents/Code/CPE 233/CPE233Labs/CPE233Labs.srcs/sources_1/imports/Downloads/OTTER_Wrapper_v1_07.sv}
 }
 read_verilog -library xil_defaultlib {
